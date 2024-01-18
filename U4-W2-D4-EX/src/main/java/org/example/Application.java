@@ -89,10 +89,18 @@ public class Application {
         orderList.add(order10);
 
 //ESERCIZIO 1
+
         System.out.println("");
         System.out.println("Esercizio 1");
-        orderList.stream().collect(Collectors.groupingBy(Order::getCustomer)).forEach((cos, ord) -> System.out.println(cos.getName() + " " + ord));
+     //   orderList.stream().collect(Collectors.groupingBy(Order::getCustomer)).forEach((cos, ord) -> System.out.println(cos.getName() + " " + ord));
 
+        Map<Customer,List<Order>> ordersForCust = orderList.stream().collect(Collectors.groupingBy(Order::getCustomer));
+
+        ordersForCust.forEach((cust,orders)->{
+            System.out.println(cust.getName());
+            System.out.println(orders);
+            System.out.println();
+        });
 
 //ESERCIZIO 2
 
@@ -110,7 +118,7 @@ public class Application {
 //ESERCIZIO 3
         System.out.println("");
         System.out.println("Esercizio 3");
-        productList.stream().sorted(Comparator.comparing(Product::getPrice, Comparator.reverseOrder())).forEach(o -> System.out.println(o));
+        productList.stream().sorted(Comparator.comparing(Product::getPrice, Comparator.reverseOrder())).forEach(System.out::println);
 
 
         //ESERCIZIO 4
@@ -127,6 +135,6 @@ public class Application {
         System.out.println("");
         System.out.println("Esercizio 5");
 
-        productList.stream().collect(Collectors.groupingBy(prod -> prod.getCategory(), Collectors.summingDouble(prod -> prod.getPrice()))).forEach((cat, sum) -> System.out.println(cat + "" + sum));
+        productList.stream().collect(Collectors.groupingBy(Product::getCategory, Collectors.summingDouble(Product::getPrice))).forEach((cat, sum) -> System.out.println(cat + "" + sum));
     }
 }
