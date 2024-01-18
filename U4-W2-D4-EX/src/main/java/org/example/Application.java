@@ -88,21 +88,21 @@ public class Application {
         orderList.add(order9);
         orderList.add(order10);
 
-//ESERCIZIO 1
+        //ESERCIZIO 1
 
         System.out.println("");
         System.out.println("Esercizio 1");
-     //   orderList.stream().collect(Collectors.groupingBy(Order::getCustomer)).forEach((cos, ord) -> System.out.println(cos.getName() + " " + ord));
+        //   orderList.stream().collect(Collectors.groupingBy(Order::getCustomer)).forEach((cos, ord) -> System.out.println(cos.getName() + " " + ord));
 
-        Map<Customer,List<Order>> ordersForCust = orderList.stream().collect(Collectors.groupingBy(Order::getCustomer));
+        Map<Customer, List<Order>> ordersForCust = orderList.stream().collect(Collectors.groupingBy(Order::getCustomer));
 
-        ordersForCust.forEach((cust,orders)->{
+        ordersForCust.forEach((cust, orders) -> {
             System.out.println(cust.getName());
             System.out.println(orders);
             System.out.println();
         });
 
-//ESERCIZIO 2
+        //ESERCIZIO 2
 
         System.out.println("");
         System.out.println("Esercizio 2");
@@ -115,7 +115,7 @@ public class Application {
         );
 
 
-//ESERCIZIO 3
+        //ESERCIZIO 3
         System.out.println("");
         System.out.println("Esercizio 3");
         productList.stream().sorted(Comparator.comparing(Product::getPrice, Comparator.reverseOrder())).forEach(System.out::println);
